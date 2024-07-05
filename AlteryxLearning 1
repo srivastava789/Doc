@@ -1,0 +1,466 @@
+Alteryx designer x64
+Alteryx Version : 2021.4.2
+Client : 2021.1.0
+Server 2021.4.2.05617
+
+Permission : Schedule Jobs and Create new collections
+Email Notification: Collections shared with me, Workflows added to or updated
+in collections shared with me
+
+Time Zone : America/Detroit(-04:00)
+Locale: US
+Credential Type : Shared Credentials
+
+Alteryx Server : Server is a pillar of the Alteryx Platform, allowing users to share
+, automate and scale analytics processes. It also acts as a
+conduit with other products in the alteryx platform, such as Designer and connect.
+.yxft field type
+.yxwz analytical app
+.yxmc macros
+.yxdb database
+.yxmd workflow
+.yxwg workflow group
+.yxzp packaged workflow
+
+green color : indicates to identify no quality issue
+yellow(NULL): The column contains no values
+red(Not OK): values contain with leading or trailing white spaces
+Gray(Empty) : The column contains string with no values
+Green(OK): The column contains value without leading or trailing white spaces
+
+What is Alteryx Designer, and why should you use it?
+Alteryx Designer is a Windows tool that allows users to construct repeatable workflow processes using an 
+intuitive drag-and-drop user interface. Users can develop Alteryx workflows, apps, and macros by dragging tools 
+from a toolbox into a canvas, connecting them, and editing their settings.
+
+
+What exactly is the Alteryx Gallery?
+A gallery is a workflow publishing, sharing, and execution tool that can be hosted in the cloud or locally. 
+Users can publish Designer workflows, macros, and apps to a private Gallery hosted on your company's server 
+architecture in a Server deployment.
+
+
+Expression in Alteryx-
+
+Formula tool - Is used to Create New Column , Modify Existing Column
+a- In formula tool the data type and size of existing column cannot be changed.
+b- Columns can selected by selecting the open brackets and also in expression window select large x for selecting the 
+columns and constants
+c- formula tool also have functions librarty 
+
+String related functions and when it can be used:
+1- Title Case[String] - Convert a string to Title Case
+2- Trim[String] - Removes Specified characters from the string 
+3- Uppercase[String] - Coverts a string to upper Case
+
+Conditional Statements Writing---
+
+IF c THEN t ELSE f ENDIF
+IF c THEN t ELSEIF c2 THEN t2 ELSE f ENDIF
+
+IF THEN STATEMENTS
+IF [Day] = "Sat" or [Day]="Sun" THEN 1 ELSE 0 ENDIF
+
+INLINE IF STATEMENTS
+IIF([DAY] = "Sat" or [Day] = "Sun", 1, 0) Note-- No Endif is required in this statement
+
+-------------------------------------------------------------------------------
+IF c THEN t ELSEIF c2 THEN t2 ELSE f ENDIF
+
+INLINE IF STATEMENTS
+Switch(Value,Default,Case1,Result1.....CaseN,ResultN)
+
+
+Difference between Null() and IsNull()
+Null() is in the "Specialized" category, while IsNull() is in the "Test" category
+
+Difference between ISNULL() AND IS NULL()
+
+We use the IsNull(v) : TESTS if(v) is NULL. Returns True if v is NULL, otherwise returns False.
+To populate a row with a NULL value, use the NULL() function.
+
+Example : Name(v)          IsNull
+           John              False
+           [Null]            True
+
+Difference between NULL() and empty string
+
+An empty string is a string instance of zero length, whereas a null string has no value at all.
+
+What IsEmpty?
+IsEmpty(v) : Tests if v is "NULL" or equal to ""(empty)
+Example:
+Name(v)       IsEmpty
+John           False
+               True
+[NULL]         True
+
+
+STRING FUNCTIONS
+
+When dealing with string data you may find unnecceary charcters and standardize the charactes.
+
+1-Remove the leading and trailing white spaces(Trailing whitespace is any spaces or tabs after the last non-whitespace character on the line until the newline)
+
+Removing charcters including white space can be accomplished by the ("Trim Funciton")
+1 - TrimLeft()----> Removed charcters at the bigning of the string
+2-  TrimRight()---->Removed charcters at the end of the string 
+3-Trim()---->Removed charcters both end of the string
+
+Trim(String,y)---> String--> Column to trim, y -->chacters to remove from string
+
+2- Replacing Characters--> String
+                                Replace(), ReplaceFirst(), ReplaceChar()
+
+Replace([column],"ABC","123")----> Replace specified string any time when it is occured
+ReplaceFirst([column],"ABC","123")--->Replace the first occurance of the target string 
+
+ReplaceChar([column],"A","1")--->Replace any listed charcter with a single character specified as a replacement value
+
+3- String function case be used to specify the string value to "UpperCase(), LowerCase() and TitleCase() which is imprtant for
+data blending or reporting purposes.
+
+
+Numeric Function: 
+
+CEIL(x) - Rounds UP to the nearest integer
+FLOOR(x) - Rounds DOWN to the nearest integer
+SmartRound(x) - Rounds to the nearest multiple, dynamically decided by Designer
+Round(x,mult)- Rounds to the nearest multiple specified
+
+DateTime Functions: 
+
+Standard Date: YYYY:MM:DD
+Standard Time: HH:MM:SS
+Standard DateTime: YYYY:MM:DD HH:MM:SS
+
+Question 1 - Which date will the investment reach maturity? And how
+             many days must pass before that investment matures?
+
+
+
+
+
+Spatial Functions: 
+Spatial functions in the formula tool can create, return information
+about and analyze relationships between spactial objects. While most of
+these same functions can be performed using tool spatial tool palette.
+
+One of the most poweful aspects of spatial analysis is being able to 
+to answer questions about how spatial objects relate to each other. 
+The Formula tool contains spatial functions that can help answer
+these types of questions in the form of spatial objects and True and False values
+
+The funciton "Intersection" outputs a spatial object that represents the intersection
+between two selected spatial objects. When using this functions and others that spatially process data
+the coloumns outgoing data type should be set to Spatial Object.
+
+The functions "Intersects" evaluats whether two spatial objects intersects and return a result of True, or 1, or False or zero.
+Other spatial functions, such as Contains, Touches and within, evaluate the presence or absence of these spatial relationships
+
+"ST_Intersects" : The possible output from the funciton "ST_Intersects"?
+Ans : 1,0
+
+Note: The formula tool calcualte distance in Only
+Miles, Kilometes, meters and FEET.
+
+Note: Spatial functions can also provide output
+"Spatial Objects" and True-False
+
+Multi-Row Formula tool : 
+Create New Column or Modify Existing Column
+Expression Editors with Functions Library
+Process Data from top down 
+
+Multi-Row Formula tool allows you to use raw data as part of the formula creation and is useful for parsing
+complex data, and creating running totals, averages, percentages and other mathematical calculations
+
+The Multi-Row formula tool can only update one field per tool instance.
+
+Imt Note for multi-row formula tool: 
+Can use Values from Other Rows and Can apply one expression in One Tool
+
+Row-1: The row before the active row
+Row+0: This is the Active Row. The active row is the
+row the result goes into.
+Row+1: The row after the active row.
+
+Question: create a grouped Record Id column
+Ans expression : [Row-1:Record id]+1 ---> Each row increased by 1
+
+
+Multi-Field formula tool :
+Use Multi-Field Formula to create or update multiple fields using a single expression
+
+
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT(OUTER)JOIN: Returns all the records from the left table, and the matched records from the right table
+RIGHT(OUTER)JOIN: Returns all the records from the right table, and the match records from the right table
+FULL (OUTER)JOIN: Returns all the records when there is a match in either left or right table
+
+Join Tool : Remove Columns, Rename Columns and Reorder Columns
+
+Views are saved queries that you can create in your database.
+A single view can reference two or more tables.
+Views must be created by a database developer or administrator with
+appropriate permission in the database.
+
+CREARE VIEW <schema_name.view_name>[<column_alias_list>]
+[WITH<view_option>]
+AS select_statement;
+
+Note : The ORDER BY cluse is not permittted in a view 
+definition unless the view uses a TOP, OFFSET/FETCH, or FOR XML element
+
+THE TOP filter
+The 'TOP' filter is commonly used to construct in T-SQL. for example
+Return the three most recent orfers." In this request the order for the filter is based
+on orderdate, descending and the number of rows you want to filter based 
+on this order is 3.
+
+SELECT TOP(3) orderid, orderdate, custid, empid
+FROM Sales.Orders
+ORDER BY orderdate DESC;
+
+OUTPUT
+orderid     orderdate  custid      empid
+----------- ---------- ----------- -----------
+11077       2015-05-06 65          1
+11076       2015-05-06 9           4
+11075       2015-05-06 68          8
+
+Use TOP ot specify the percent(of the total number of rows in query result)
+YOu do so by proivding a value in the range 0 through 100(typed as FLOAT)
+and add the PERCENT keyword. 
+
+SELECT TOP(1) PERCENT orderid, orderdate, custid, empid
+FROM sales.Orders
+ORDER BY orderdate DESC;
+
+TWO OPTIONS USING THE "WITH TIES" or Unique Ordering
+
+SELECT TOP(3) WITH TIES orderid, orderdate, custid, empid
+FROM Sales.Orders
+ORDER BY orderdate DESC;
+orderid     orderdate  custid      empid
+----------- ---------- ----------- -----------
+11077       2015-05-06 65          1
+11076       2015-05-06 9           4
+11075       2015-05-06 68          8
+11074       2015-05-06 73          7
+
+If you have a case where you need to filter a certain number of rows but truly don’t care about order, it could be a good idea to specify ORDER BY (SELECT NULL), like so:
+
+SELECT TOP (3) orderid, orderdate, custid, empid
+FROM Sales.Orders
+ORDER BY (SELECT NULL);
+
+The OFFSET-FETCH filter is a standard feature designed similar to TOP but with an extra element. You can specify how many rows you want to skip before specifying how many rows you want to filter.
+SELECT orderid, orderdate, custid, empid
+FROM Sales.Orders
+ORDER BY orderdate DESC, orderid DESC
+OFFSET 50 ROWS FETCH NEXT 25 ROWS ONLY;
+
+Temporary tables are of two types
+ a- Local  temporary tables
+ b- Global temporary tables
+
+Create local temporary tables:
+Use local temporary tables to create tables scoped to your current
+session. this means that your temporary table is only visible 
+to you. and when the session is over, the table no longer exists
+Multiple users can create tables using the same name, and they would have
+no effect on each other.
+
+To create a local temporary table, you use thesame approach as you would when
+creating a regular table. However, you'd add "#"before the table name to signify
+that it's a local temporary table
+
+CREATE TABLE #Products(
+ ProductID INT PRIMARY KEY,
+ ProductName varchar,
+ ...
+);
+
+GLOBAL Temporary tables
+
+1>A global temporary table is accessible across all session.
+2> Global temporary table must have a unique name, unlike a local temporary table.
+3> Global temporary tables are dropped automatically when the sessions ends
+4> The Global temporary tables would create same as local temporary table
+only use "##" instead sigle "#" specify
+
+CREATE TABLE ##Products (
+    ProductID INT PRIMARY KEY,
+    ProductName varchar,
+    ...
+);
+
+Insert and read data from a temporary table
+You just need to make sure to append the # or ## to the table name
+
+INSERT #Products (ProductID, ProductName, ProductDescription)  
+    VALUES (1, 'The temporary time leap', 'A novel about temporary time leaping.');  
+
+You can also retrieve results
+SELECT *  
+FROM #Products  
+ORDER BY ProductName;
+
+CTEs require a name for the table expression, in addition to unique names for each of the columns referenced in the CTE's SELECT clause.
+CTEs may use inline or external aliases for columns.
+
+Derived tables allow you to write Transact-SQL statements that are more modular, helping you to break down complex queries into more manageable parts.
+
+-------------------------------------------------
+UNION - the combine result does not include duplicates
+UNION ALL - the combine result set does include duplicates
+
+There are two rules when combinig result sets using UNION
+
+1> The number and the order of the column must be the same in all queries
+2> The data types must be compatible
+
+atomicity, consistency, isolation, and durability (ACID)
+
+
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+sudo usermod -aG docker $USER && newgrp docker
+alias kubectl="minikube kubectl --"
+minikube start --driver=docker
+kubectl get po -A
+
+=== for already installed systems ====
+newgrp docker
+alias kubectl="minikube kubectl --"
+minikube start --driver=docker
+
+===============================
+
+git clone https://github.com/JasonHaley/hello-python.git
+cd hello-python/app
+vi Dockerfile
+=========== Dockerfile ======
+FROM python:3.7
+RUN mkdir /app
+WORKDIR /app
+ADD . /app/
+RUN pip install -r ./app/requirements.txt
+EXPOSE 5000
+CMD ["python", "./app/main.py"]
+===================
+Build Docker Image
+sudo docker build  -t hello-python:latest .
+sudo docker run -p 5001:5000 hello-python
+
+Kubernetes Setup
+Deployment.yml
+===============================
+labuser@ip-172-31-19-238:~/hello-python/kubernetes$ cat deployment.yaml 
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-python-service
+
+spec:
+  selector:
+    app: hello-python
+  ports:
+  - protocol: "TCP"
+    port: 6000
+    targetPort: 5000
+  type: LoadBalancer
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-python
+spec:
+  selector:
+    matchLabels:
+      app: hello-python
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: hello-python
+    spec:
+      containers:
+      - name: hello-python
+        image: hello-python:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+
+
+===============================
+minikube image load hello-python
+kubectl apply -f deployment.yaml
+kubectl port-forward service/hello-python-service 7010:6000
+
+
+
+export PATH=$PATH:/home/labuser/.local/bin
+
+
+=====.bashrc ====
+export AIRFLOW_HOME=~/airflow
+export PATH=$PATH:/home/labuser/.local/bin
+
+=========
+
+import datetime as dt
+
+from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+from airflow.operators.python_operator import PythonOperator
+from datetime import datetime, timedelta
+
+
+def greet():
+    print('Writing in file')
+    return 'Greeted'
+
+
+def respond():
+    return 'Greet Responded Again'
+
+
+default_args = {
+    'owner': 'labuser',
+    'depends_on_past' : False,
+    'start_date': dt.datetime(2023,2,16, 10, 00, 00),
+    'concurrency': 1,
+    'email': ['devraj@bdec.in'],
+    'email_on_failure': True,
+    'email_on_retry': False,
+    'retries': 2,
+    'retry_delay': timedelta(minutes=1)
+}
+
+
+with DAG('my_simple_dag',
+         catchup=False,
+         default_args=default_args,
+         schedule_interval='*/10 * * * *',
+         # schedule_interval=None,
+         ) as dag:
+    opr_hello = BashOperator(task_id='say_Hi',
+                             bash_command='echo "Hi!!"')
+    opr_greet = PythonOperator(task_id='greet',
+                               python_callable=greet)
+    opr_sleep = BashOperator(task_id='sleep_me',
+                             bash_command='sleep 5')
+    opr_respond = PythonOperator(task_id='respond',
+                                 python_callable=respond)
+
+    opr_hello >> opr_greet >> opr_sleep >> opr_respond
+
+
+===================== end of dag =========
+
+Fixed LOD: Are always added after the context filter and before the dimensions filter
